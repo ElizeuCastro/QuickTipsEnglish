@@ -1,0 +1,42 @@
+/*
+  Type:
+  1 - TAXY
+
+*/
+
+[
+  {
+    "type": 1,
+    "typeDescription": "Taxi",
+    "items": [
+      {"descriptionBr": "Pegue um táxi", "descriptionUs": "Take a taxi", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Está livre?", "descriptionUs": "Are you free?", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Sim, estou livre", "descriptionUs": "Yes, I'm free", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Não, não estou livre", "descriptionUs": "No, I’m not free", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Quanto custa até o Hotel Plaza?", "descriptionUs": "How much is it to the Plaza Hotel?", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Por favor, entre no carro", "descriptionUs": "Please get in the car", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Esta é a sua mala?", "descriptionUs": "Is this your bag?", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Posso te ajudar com as suas bagagens?", "descriptionUs": "Can I help you with your baggage?", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Por favor, ligue o ar-condicionado", "descriptionUs": "Please, turn on the air conditioning", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Por favor, desligue o ar-condicionado", "descriptionUs": "Please, turn off the air conditioning", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Qual é o endereço?", "descriptionUs": "What's the address?", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "É longe daqui?", "descriptionUs": "Is it far from here?", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Estou com pressa", "descriptionUs": "I'm in a hurry", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Quanto tempo leva para chegar lá?", "descriptionUs": "How long does it take to get there?", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Leva 20 minutos", "descriptionUs": "It takes 20 minutes", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Depende do trânsito", "descriptionUs": "It depends on the traffic", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Tem bastante trânsito", "descriptionUs": "There's a lot of traffic", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "É a hora do rush", "descriptionUs": "It's the rush hour", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Aqui estamos", "descriptionUs": "Here we are", "titleBr": "", "titleUs": ""},
+      {"descriptionBr": "Pare aqui, por favor", "descriptionUs": "Stop here, please", "titleBr": "", "titleUs": ""}
+    ]
+  },
+  {
+    "type": 2,
+    "typeDescription": "teste",
+    "items": [
+      {"descriptionBr": "desc br", "descriptionUs": "desc us", "titleBr": "br", "titleUs": "us"},
+      {"descriptionBr": "desc br", "descriptionUs": "desc us", "titleBr": "br", "titleUs": "us"}
+    ]
+  }
+]
