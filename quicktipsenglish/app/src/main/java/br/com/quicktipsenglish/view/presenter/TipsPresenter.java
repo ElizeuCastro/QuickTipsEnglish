@@ -26,5 +26,6 @@ public class TipsPresenter {
             }
         }
         view.showTips(items);
+        view.setUpTextToSpeech();
     }
 }

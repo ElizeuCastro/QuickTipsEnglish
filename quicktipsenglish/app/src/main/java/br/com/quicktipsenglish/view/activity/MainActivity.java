@@ -20,7 +20,8 @@ import br.com.quicktipsenglish.view.fragment.AboutFragment;
 import br.com.quicktipsenglish.view.fragment.TipsFragment;
 import br.com.quicktipsenglish.view.presenter.MainPresenter;
 
-public class MainActivity extends AppCompatActivity implements MainPresenter.Callback, AdapterView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements MainPresenter.Callback,
+        AdapterView.OnItemClickListener {
 
     private ListView menus;
     private MainPresenter presenter;

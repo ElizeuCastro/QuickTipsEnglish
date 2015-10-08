@@ -8,4 +8,5 @@ public interface TipsView {
 
     void showTips(List<TipsItem> tips);
 
+    void setUpTextToSpeech();
 }
