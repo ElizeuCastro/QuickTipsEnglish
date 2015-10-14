@@ -26,33 +26,47 @@ import br.com.quicktipsenglish.view.presenter.TipsPresenter;
 /**
  * Created by elizeu on 09/09/15.
  */
-public class TipsFragment extends Fragment implements TipsView, TipsAdapter.OnClickListener, TextToSpeech.OnInitListener {
+public class TipsFragment extends Fragment implements TipsView, TipsAdapter.OnClickListener,
+        TextToSpeech.OnInitListener, SpeakingDialog.SpeakingListener {
 
     private TipsPresenter presenter;
     private SpeakingDialog speakingDialog;
     private RecyclerView rcvTips;
     private TipsAdapter tipsAdapter;
     private TextToSpeech textToSpeech;
-    private View view;
-
 
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle bundle) {
-        view = inflater.inflate(R.layout.fragment_tips, container, false);
+        return inflater.inflate(R.layout.fragment_tips, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         presenter = new TipsPresenter(this);
         if (getArguments() != null) {
-            presenter.retrieveTips(getArguments().getInt("TYPE_TIP"));
+            presenter.onViewCreated(getArguments().getInt("TYPE_TIP"));
         }
-        speakingDialog = new SpeakingDialog();
-        return view;
+    }
+
+    @Override
+    public void bindView() {
+        final Fragment fragment = getFragmentManager()
+                .findFragmentByTag(SpeakingDialog.class.getName());
+        if (fragment != null) {
+            this.speakingDialog = (SpeakingDialog) fragment;
+        } else {
+            speakingDialog = new SpeakingDialog();
+        }
+        speakingDialog.setListener(this);
     }
 
     @Override
     public void showTips(final List<TipsItem> tips) {
         final LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         tipsAdapter = new TipsAdapter(tips, this);
-        rcvTips = (RecyclerView) view.findViewById(R.id.rcv_tips);
+        rcvTips = (RecyclerView) getView().findViewById(R.id.rcv_tips);
         rcvTips.setLayoutManager(layoutManager);
         rcvTips.setAdapter(tipsAdapter);
     }
@@ -66,26 +80,28 @@ public class TipsFragment extends Fragment implements TipsView, TipsAdapter.OnCl
 
     @Override
     public void speakUs(final TipsItem tip) {
-        openSpeakingDialog();
-        speakNow(tip.getDescriptionUs(), Locale.US, "us");
+        presenter.prepareToSpeak(tip.getDescriptionUs(), Locale.US, "us");
     }
 
     @Override
     public void speakBr(final TipsItem tip) {
-        openSpeakingDialog();
-        speakNow(tip.getDescriptionBr(), new Locale("pt"), "br");
+        presenter.prepareToSpeak(tip.getDescriptionBr(), new Locale("pt"), "br");
     }
 
-    private void speakNow(final String description, final Locale locale, final String utteranceId) {
-        final HashMap<String, String> params = new HashMap<>();
-        params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, utteranceId);
+    @Override
+    public void speakNow(final String description, final Locale locale, final HashMap<String, String> params) {
         textToSpeech.setLanguage(locale);
         textToSpeech.speak(description, TextToSpeech.QUEUE_FLUSH, params);
     }
 
-    private void openSpeakingDialog() {
+    @Override
+    public void openSpeakingDialog() {
         speakingDialog.setCancelable(false);
-        speakingDialog.show(getChildFragmentManager(), SpeakingDialog.class.getName());
+        if (!speakingDialog.isAdded()) {
+            speakingDialog.show(getChildFragmentManager(), SpeakingDialog.class.getName());
+        } else {
+            speakingDialog.starAnimation();
+        }
     }
 
     @Override
@@ -99,17 +115,28 @@ public class TipsFragment extends Fragment implements TipsView, TipsAdapter.OnCl
 
                 @Override
                 public void onDone(String utteranceId) {
-                    speakingDialog.setCancelable(true);
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            speakingDialog.setCancelable(true);
+                            speakingDialog.stopAnimation();
+                        }
+                    });
                     Log.d("TextToSpeech", utteranceId);
                 }
 
                 @Override
                 public void onError(String utteranceId) {
-                    speakingDialog.setCancelable(true);
+                    onDone(utteranceId);
                     Log.d("TextToSpeech", utteranceId);
                 }
             });
         }
+    }
+
+    @Override
+    public void onRepeat() {
+        presenter.onRepeat();
     }
 
 }

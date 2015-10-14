@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.BounceInterpolator;
+import android.widget.ImageView;
 
 import br.com.quicktipsenglish.R;
 import br.com.quicktipsenglish.view.component.AnimatedScaleDrawable;
@@ -15,7 +16,15 @@ import br.com.quicktipsenglish.view.component.AnimatedScaleDrawable;
 /**
  * Created by elizeu on 08/10/15.
  */
-public class SpeakingDialog extends DialogFragment {
+public class SpeakingDialog extends DialogFragment implements View.OnClickListener {
+
+    public interface SpeakingListener {
+        void onRepeat();
+    }
+
+    private SpeakingListener listener;
+    private AnimatedScaleDrawable drawable;
+    private ImageView imageView;
 
     @Nullable
     @Override
@@ -26,12 +35,49 @@ public class SpeakingDialog extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        AnimatedScaleDrawable drawable = new AnimatedScaleDrawable(
+        prepareAnimation();
+        bindView();
+        starAnimation();
+    }
+
+    private void bindView() {
+        imageView = (ImageView) getView().findViewById(R.id.imv);
+        imageView.setOnClickListener(this);
+    }
+
+    private void prepareAnimation() {
+        drawable = new AnimatedScaleDrawable(
                 ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.vs_micbtn_on));
         drawable.setInterpolator(new BounceInterpolator());
         drawable.setInvertTransformation(true);
         drawable.setDuration(500);
-        getView().findViewById(R.id.imv).setBackground(drawable);
-        drawable.start();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.imv) {
+            if (listener != null) {
+                listener.onRepeat();
+            }
+        }
+    }
+
+    public void starAnimation() {
+        if (drawable != null) {
+            imageView.setBackground(drawable);
+            drawable.start();
+        }
+    }
+
+    public void stopAnimation() {
+        if (drawable != null) {
+            drawable.stop();
+            imageView.setBackground(ContextCompat
+                    .getDrawable(getActivity().getApplicationContext(), R.drawable.vs_micbtn_on));
+        }
+    }
+
+    public void setListener(final SpeakingListener listener) {
+        this.listener = listener;
     }
 }
