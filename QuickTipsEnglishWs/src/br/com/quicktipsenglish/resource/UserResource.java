@@ -35,4 +35,20 @@ public class UserResource {
 		}
 		return response;
 	}
+
+	@POST
+	@Path("/login")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response login(@FormParam("nick_name") String nickName,
+			@FormParam("password") String password) {
+		final UserDAO userDAO = new UserDAO();
+		final boolean sucess = userDAO.login(new User(nickName, password));
+		Response response = Response.status(Status.NOT_FOUND).build();
+		if (sucess) {
+			response = Response.ok().build();
+		}
+		return response;
+	}
+
 }

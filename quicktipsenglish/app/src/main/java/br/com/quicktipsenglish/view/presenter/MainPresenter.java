@@ -8,9 +8,11 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.quicktipsenglish.cache.TipsCache;
+import br.com.quicktipsenglish.model.Menu;
 import br.com.quicktipsenglish.model.Tip;
 
 public class MainPresenter {
@@ -40,6 +42,7 @@ public class MainPresenter {
                     final Gson gson = new Gson();
                     List<Tip> tips = gson.fromJson(json, token.getType());
                     TipsCache.setTips(tips);
+                    TipsCache.setMenus(retrieveMenus(tips));
                 } catch (IOException ex) {
                     return Boolean.FALSE;
                 }
@@ -56,6 +59,14 @@ public class MainPresenter {
             }
         }.execute();
 
+    }
+
+    private List<Menu> retrieveMenus(List<Tip> tips) {
+        final List<Menu> menus = new ArrayList<>();
+        for (final Tip tip : tips) {
+            menus.add(new Menu(tip.getType(), tip.getTypeDescription()));
+        }
+        return menus;
     }
 
 

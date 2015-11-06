@@ -32,4 +32,20 @@ public class UserDAO {
 		}
 		return user;
 	}
+
+	public boolean login(User user) {
+		final String sql = "select * from user where user_nickname = ? and user_password = ?";
+		boolean sucess = false;
+		try {
+			PreparedStatement statement = ConnectionFactory.getConnection()
+					.prepareStatement(sql);
+			statement.setString(1, user.getNickName());
+			statement.setString(2, user.getPassword());
+			final ResultSet resultSet = statement.executeQuery();
+			sucess = resultSet.next();
+		} catch (final SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return sucess;
+	}
 }

@@ -1,6 +1,5 @@
 package br.com.quicktipsenglish.model;
 
-
 public class User {
 
 	private Integer id;
@@ -22,6 +21,11 @@ public class User {
 		super();
 		this.id = id;
 		this.email = email;
+		this.nickName = nickName;
+		this.password = password;
+	}
+
+	public User(String nickName, String password) {
 		this.nickName = nickName;
 		this.password = password;
 	}
