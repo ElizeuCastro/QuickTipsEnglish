@@ -1,0 +1,326 @@
+[
+  {
+    "type": 1,
+    "typeDescription": "Taxi",
+    "items": [
+      {
+        "titleBr": "",
+        "descriptionBr": "Pegue um táxi",
+        "titleUs": "",
+        "descriptionUs": "Take a taxi"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Está livre?",
+        "titleUs": "",
+        "descriptionUs": "Are you free?"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Sim, estou livre",
+        "titleUs": "",
+        "descriptionUs": "Yes, I'm free"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Não, não estou livre",
+        "titleUs": "",
+        "descriptionUs": "No, I’m not free"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Quanto custa até o Hotel Plaza?",
+        "titleUs": "",
+        "descriptionUs": "How much is it to the Plaza Hotel?"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Por favor, entre no carro",
+        "titleUs": "",
+        "descriptionUs": "Please get in the car"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Esta é a sua mala?",
+        "titleUs": "",
+        "descriptionUs": "Is this your bag?"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Posso te ajudar com as suas bagagens?",
+        "titleUs": "",
+        "descriptionUs": "Can I help you with your baggage?"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Por favor, desligue o ar-condicionado",
+        "titleUs": "",
+        "descriptionUs": "Please, turn off the air conditioning"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Qual é o endereço?",
+        "titleUs": "",
+        "descriptionUs": "What's the address?"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "É longe daqui?",
+        "titleUs": "",
+        "descriptionUs": "Is it far from here?"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Estou com pressa",
+        "titleUs": "",
+        "descriptionUs": "I'm in a hurry"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Quanto tempo leva para chegar lá?",
+        "titleUs": "",
+        "descriptionUs": "How long does it take to get there?"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Leva 20 minutos",
+        "titleUs": "",
+        "descriptionUs": "It takes 20 minutes"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Depende do trânsito",
+        "titleUs": "",
+        "descriptionUs": "It depends on the traffic"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Tem bastante trânsito",
+        "titleUs": "",
+        "descriptionUs": "There's a lot of traffic"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "É a hora do rush",
+        "titleUs": "",
+        "descriptionUs": "It's the rush hour"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Aqui estamos",
+        "titleUs": "",
+        "descriptionUs": "Here we are"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Pare aqui, por favor",
+        "titleUs": "",
+        "descriptionUs": "Stop here, please"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Pode me deixar aqui",
+        "titleUs": "",
+        "descriptionUs": "You can drop me here"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Eu não posso parar aqui",
+        "titleUs": "",
+        "descriptionUs": "I can’t stop here"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Espere aqui, por favor",
+        "titleUs": "",
+        "descriptionUs": "Wait here, please"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Quanto é?",
+        "titleUs": "",
+        "descriptionUs": "How much is it?"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Quanto é para ir e voltar?",
+        "titleUs": "",
+        "descriptionUs": "How much to go there and back?"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Você aceita cartão de crédito?",
+        "titleUs": "",
+        "descriptionUs": "Do you take credit cards?"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Não, somente dinheiro",
+        "titleUs": "",
+        "descriptionUs": "No, only cash"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Você tem troco para R$ 50?",
+        "titleUs": "",
+        "descriptionUs": "Do you have change for R$ 50?"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Desculpe, eu não tenho nenhum trocado",
+        "titleUs": "",
+        "descriptionUs": "Sorry, I don’t have any change"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Fique com o troco",
+        "titleUs": "",
+        "descriptionUs": "Keep the change"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Aqui está seu recibo",
+        "titleUs": "",
+        "descriptionUs": "Here’s your receipt"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Aqui está meu cartão",
+        "titleUs": "",
+        "descriptionUs": "Here’s my card"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Ligue para mim se precisar de um táxi, O.k.?",
+        "titleUs": "",
+        "descriptionUs": "Call me if you need a taxi OK?"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Posso te pegar no hotel",
+        "titleUs": "",
+        "descriptionUs": "I can pick you up at the hotel"
+      },
+      {
+        "titleBr": "",
+        "descriptionBr": "Tenha uma boa estada",
+        "titleUs": "",
+        "descriptionUs": "Have a nice stay"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "typeDescription": "Cantadas",
+    "items": [
+      {
+        "titleBr": "",
+        "descriptionUs": "Do you have a girlfriend?",
+        "titleUs": "",
+        "descriptionBr": "Você tem namorada?"
+      },
+      {
+        "titleBr": "",
+        "descriptionUs": "Do you have a boyfriend?",
+        "titleUs": "",
+        "descriptionBr": "Você tem namorado?"
+      },
+      {
+        "titleBr": "",
+        "descriptionUs": "I'm in love with you?",
+        "titleUs": "",
+        "descriptionBr": "Eu estou apaixonado por você?"
+      },
+      {
+        "titleBr": "",
+        "descriptionUs": "Is it hot in here, or is that just you?",
+        "titleUs": "",
+        "descriptionBr": "Está quente aqui, ou é apenas você?"
+      },
+      {
+        "titleBr": "",
+        "descriptionUs": "Do you want to be my girlfriend?",
+        "titleUs": "",
+        "descriptionBr": "Você quer ser minha namorada?"
+      },
+      {
+        "titleBr": "",
+        "descriptionUs": "Do you want to be my boyfriend?",
+        "titleUs": "",
+        "descriptionBr": "Você quer ser meu namorado?"
+      },
+      {
+        "titleBr": "",
+        "descriptionUs": "You look like my next girlfriend",
+        "titleUs": "",
+        "descriptionBr": "Você parece com minha próxima namorada"
+      },
+      {
+        "titleBr": "",
+        "descriptionUs": "You look like my next boyfriend",
+        "titleUs": "",
+        "descriptionBr": "Você parece com meu próximo namorado"
+      },
+      {
+        "titleBr": "",
+        "descriptionUs": "Did it hurt when you fell from heaven?",
+        "titleUs": "",
+        "descriptionBr": "Machucou quando você caiu do céu?"
+      },
+      {
+        "titleBr": "",
+        "descriptionUs": "May i buy you a drink?",
+        "titleUs": "",
+        "descriptionBr": "Eu posso te pagar uma bebida?"
+      },
+      {
+        "titleBr": "",
+        "descriptionUs": "I wish i were cross-eyed so i could see you twice",
+        "titleUs": "",
+        "descriptionBr": "Eu queria ser um vesgo para ver você em dobro"
+      },
+      {
+        "titleBr": "",
+        "descriptionUs": "You look like somebody famous",
+        "titleUs": "",
+        "descriptionBr": "Você parece alguém famoso"
+      },
+      {
+        "titleBr": "",
+        "descriptionUs": "Do you believe in love at first sight or should I walk by again?",
+        "titleUs": "",
+        "descriptionBr": "Você acredita em amor à primeira vista ou eu devo passar por aqui de novo?"
+      },
+      {
+        "titleBr": "",
+        "descriptionUs": "Are you religious? ‘Cause you’re the answer to all my prayers.",
+        "titleUs": "",
+        "descriptionBr": "Você é religiosa? Porque você é a resposta de todas as minhas preces"
+      },
+      {
+        "titleBr": "",
+        "descriptionUs": "I didn’t know that angels could fly so low!",
+        "titleUs": "",
+        "descriptionBr": "Eu não sabia que anjos podiam voar tão baixo"
+      }
+    ]
+  },
+  {
+    "type": 3,
+    "typeDescription": "teste",
+    "items": [
+      {
+        "descriptionBr": "desc br",
+        "descriptionUs": "desc us",
+        "titleBr": "br",
+        "titleUs": "us"
+      },
+      {
+        "descriptionBr": "desc br",
+        "descriptionUs": "desc us",
+        "titleBr": "br",
+        "titleUs": "us"
+      }
+    ]
+  }
+]
