@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.quicktipsenglish.model.Category;
+
 public class CateroyDAO {
 
 	public Category save(final Category category) {
@@ -39,7 +41,7 @@ public class CateroyDAO {
 			final Statement statement = ConnectionFactory.getConnection()
 					.createStatement();
 			final ResultSet resultSet = statement
-					.executeQuery("select * from category order by category_name asc");
+					.executeQuery("select * from category order by category_name");
 			while (resultSet.next()) {
 				final Category category = new Category(resultSet.getInt(1),
 						resultSet.getString(2));

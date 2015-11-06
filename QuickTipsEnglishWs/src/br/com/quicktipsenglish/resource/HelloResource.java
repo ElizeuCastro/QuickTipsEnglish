@@ -5,7 +5,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.quicktipsenglish.persistence.Category;
+import br.com.quicktipsenglish.model.Category;
 import br.com.quicktipsenglish.persistence.CateroyDAO;
 
 @Path("/todo")
