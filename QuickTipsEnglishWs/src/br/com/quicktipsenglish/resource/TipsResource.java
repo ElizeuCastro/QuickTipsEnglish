@@ -1,5 +1,6 @@
 package br.com.quicktipsenglish.resource;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -12,10 +13,14 @@ import br.com.quicktipsenglish.model.Category;
 import br.com.quicktipsenglish.persistence.CateroyDAO;
 
 import com.google.gson.Gson;
+=======
+import javax.ws.rs.Path;
+>>>>>>> db683a553e0ff8403a1970ed8bab2096febe45ff
 
 @Path("/tips")
 public class TipsResource {
 
+<<<<<<< HEAD
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getTips() {
@@ -25,4 +30,8 @@ public class TipsResource {
 		return Response.ok(gson.toJson(tips)).build();
 	}
 
+=======
+	public Ca
+	
+>>>>>>> db683a553e0ff8403a1970ed8bab2096febe45ff
 }
