@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.quicktipsenglish.R;
-import br.com.quicktipsenglish.model.TipsItem;
+import br.com.quicktipsenglish.model.TipItem;
 import br.com.quicktipsenglish.view.fragment.TipsFragment;
 
 /**
@@ -25,19 +25,19 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
         /**
          * Notify speak us option
          */
-        void speakUs(TipsItem tip);
+        void speakUs(TipItem tip);
 
         /**
          * Notify speak br option
          */
-        void speakBr(TipsItem tip);
+        void speakBr(TipItem tip);
     }
 
-    private List<TipsItem> tips;
+    private List<TipItem> tips;
     private OnClickListener listener;
     private boolean isSpeaking;
 
-    public TipsAdapter(final List<TipsItem> tips, final TipsFragment listener) {
+    public TipsAdapter(final List<TipItem> tips, final TipsFragment listener) {
         this.tips = tips;
         this.listener = listener;
     }
@@ -56,7 +56,7 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        final TipsItem tip = tips.get(position);
+        final TipItem tip = tips.get(position);
         defineValueAnVisibilityTitle(holder.txvTitleUs, tip.getTitleUs());
         holder.txvDescriptionUs.setText(tip.getDescriptionUs());
         defineValueAnVisibilityTitle(holder.txvTitleBr, tip.getTitleBr());
@@ -73,7 +73,7 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
         }
     }
 
-    private void defineListenerSpeak(ViewHolder holder, final TipsItem tip) {
+    private void defineListenerSpeak(ViewHolder holder, final TipItem tip) {
         holder.imvSpeakUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

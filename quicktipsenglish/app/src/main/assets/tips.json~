@@ -1,8 +1,7 @@
 [
     {
         "type": 1,
-        "descriptionBr": "Taxista",
-        "descriptionUs": "Taxi Driver",
+        "typeDescription": "Taxi",
         "items": [
             {
                 "titleBr": "",
@@ -212,8 +211,7 @@
     },
     {
         "type": 2,
-        "descriptionBr": "Cantadas",
-        "descriptionUs": "Flirt",
+        "typeDescription": "Cantadas",
         "items": [
             {
                 "titleBr": "",
@@ -369,8 +367,7 @@
     },
     {
         "type": 3,
-        "descriptionBr": "Recepcionista",
-        "descriptionUs": "Receptionist",
+        "typeDescription": "Recepcionista",
         "items": [
             {
                 "titleBr": "",
@@ -580,8 +577,7 @@
     },
     {
         "type": 4,
-        "descriptionBr": "Vendedor",
-        "descriptionUs": "Salesman",
+        "typeDescription": "Vendedor",
         "items": [
             {
                 "titleBr": "",
@@ -755,8 +751,7 @@
     },
     {
         "type": 5,
-        "descriptionBr": "Garçom",
-        "descriptionUs": "Waiter",
+        "typeDescription": "Garçom",
         "items": [
             {
                 "titleBr": "",

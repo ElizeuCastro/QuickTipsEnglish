@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-import br.com.quicktipsenglish.model.TipsItem;
+import br.com.quicktipsenglish.model.TipItem;
 
 public interface TipsView {
 
-    void showTips(List<TipsItem> tips);
+    void showTips(List<TipItem> tips);
 
     void setUpTextToSpeech();
 

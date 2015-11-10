@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Locale;
 
 import br.com.quicktipsenglish.R;
-import br.com.quicktipsenglish.model.TipsItem;
+import br.com.quicktipsenglish.model.TipItem;
 import br.com.quicktipsenglish.view.TipsView;
 import br.com.quicktipsenglish.view.adapter.TipsAdapter;
 import br.com.quicktipsenglish.view.presenter.TipsPresenter;
@@ -63,7 +63,7 @@ public class TipsFragment extends Fragment implements TipsView, TipsAdapter.OnCl
     }
 
     @Override
-    public void showTips(final List<TipsItem> tips) {
+    public void showTips(final List<TipItem> tips) {
         final LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         tipsAdapter = new TipsAdapter(tips, this);
         rcvTips = (RecyclerView) getView().findViewById(R.id.rcv_tips);
@@ -79,12 +79,12 @@ public class TipsFragment extends Fragment implements TipsView, TipsAdapter.OnCl
     }
 
     @Override
-    public void speakUs(final TipsItem tip) {
+    public void speakUs(final TipItem tip) {
         presenter.prepareToSpeak(tip.getDescriptionUs(), Locale.US, "us");
     }
 
     @Override
-    public void speakBr(final TipsItem tip) {
+    public void speakBr(final TipItem tip) {
         presenter.prepareToSpeak(tip.getDescriptionBr(), new Locale("pt"), "br");
     }
 

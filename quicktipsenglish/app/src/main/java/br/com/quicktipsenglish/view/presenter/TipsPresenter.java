@@ -9,7 +9,7 @@ import java.util.Locale;
 
 import br.com.quicktipsenglish.cache.TipsCache;
 import br.com.quicktipsenglish.model.Tip;
-import br.com.quicktipsenglish.model.TipsItem;
+import br.com.quicktipsenglish.model.TipItem;
 import br.com.quicktipsenglish.view.TipsView;
 
 public class TipsPresenter {
@@ -25,7 +25,7 @@ public class TipsPresenter {
 
     public void onViewCreated(int type) {
         final List<Tip> tips = TipsCache.getTips();
-        final List<TipsItem> items = new ArrayList<>();
+        final List<TipItem> items = new ArrayList<>();
         for (final Tip tip : tips) {
             if (tip.getType() == type) {
                 items.addAll(tip.getItems());

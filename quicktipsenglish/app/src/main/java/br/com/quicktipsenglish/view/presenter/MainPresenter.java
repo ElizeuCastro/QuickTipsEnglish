@@ -14,18 +14,20 @@ import java.util.List;
 import br.com.quicktipsenglish.cache.TipsCache;
 import br.com.quicktipsenglish.model.Menu;
 import br.com.quicktipsenglish.model.Tip;
+import br.com.quicktipsenglish.view.MainView;
 
 public class MainPresenter {
 
-    public interface Callback {
+    private int clickBack;
+    private Context context;
+    private MainView mainView;
 
-        void onSuccess();
-
-        void onFail();
-
+    public MainPresenter(final Context context, final MainView mainView) {
+        this.context = context;
+        this.mainView = mainView;
     }
 
-    public void load(final Context context, final Callback callback) {
+    public void load() {
         new AsyncTask<Void, Void, Boolean>() {
 
             @Override
@@ -52,9 +54,9 @@ public class MainPresenter {
             @Override
             protected void onPostExecute(final Boolean result) {
                 if (result) {
-                    callback.onSuccess();
+                    mainView.onSuccess();
                 } else {
-                    callback.onFail();
+                    mainView.onFail();
                 }
             }
         }.execute();
@@ -64,12 +66,24 @@ public class MainPresenter {
     private List<Menu> retrieveMenus(List<Tip> tips) {
         final List<Menu> menus = new ArrayList<>();
         for (final Tip tip : tips) {
-            menus.add(new Menu(tip.getType(), tip.getTypeDescription()));
+            menus.add(new Menu(tip.getType(), tip.getDescriptionBr(), tip.getDescriptionUs()));
         }
         return menus;
     }
 
+    public void onBackPressed() {
+        if (clickBack < 1) {
+            clickBack++;
+            mainView.showMessageToCloseApp();
+        } else {
+            clickBack = 0;
+            mainView.finish();
+        }
+    }
 
+    public void ClearBack() {
+        clickBack = 0;
+    }
 }
 
 

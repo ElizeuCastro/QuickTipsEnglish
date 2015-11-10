@@ -1,5 +1,7 @@
 package br.com.quicktipsenglish.cache;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import br.com.quicktipsenglish.model.Menu;
@@ -15,6 +17,12 @@ public final class TipsCache {
     }
 
     public static void setTips(List<Tip> tips) {
+        Collections.sort(tips, new Comparator<Tip>() {
+            @Override
+            public int compare(final Tip lhs, final Tip rhs) {
+                return lhs.getDescriptionBr().compareTo(rhs.getDescriptionBr());
+            }
+        });
         TipsCache.tips = tips;
     }
 

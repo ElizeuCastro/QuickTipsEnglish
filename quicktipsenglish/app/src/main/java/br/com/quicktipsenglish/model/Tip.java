@@ -7,31 +7,24 @@ import java.util.List;
  */
 public class Tip {
 
-    int type;
-    String typeDescription;
-    List<TipsItem> items;
+    private int type;
+    private String descriptionBr;
+    private String descriptionUs;
+    private List<TipItem> items;
 
     public int getType() {
         return type;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public String getDescriptionBr() {
+        return descriptionBr;
     }
 
-    public String getTypeDescription() {
-        return typeDescription;
+    public String getDescriptionUs() {
+        return descriptionUs;
     }
 
-    public void setTypeDescription(String typeDescription) {
-        this.typeDescription = typeDescription;
-    }
-
-    public List<TipsItem> getItems() {
+    public List<TipItem> getItems() {
         return items;
-    }
-
-    public void setItems(List<TipsItem> items) {
-        this.items = items;
     }
 }

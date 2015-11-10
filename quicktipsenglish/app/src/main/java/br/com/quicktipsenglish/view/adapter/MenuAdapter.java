@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import br.com.quicktipsenglish.R;
 import br.com.quicktipsenglish.model.Menu;
 
 public class MenuAdapter extends BaseAdapter {
@@ -39,22 +40,27 @@ public class MenuAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater
                     .from(parent.getContext())
-                    .inflate(android.R.layout.simple_list_item_activated_1, parent, false);
-            TextView title = (TextView) convertView.findViewById(android.R.id.text1);
-            holder = new Holder(title);
+                    .inflate(R.layout.menu_item, parent, false);
+            final TextView titleBr = (TextView) convertView.findViewById(R.id.titleBr);
+            final TextView titleUs = (TextView) convertView.findViewById(R.id.titleUs);
+            holder = new Holder(titleBr, titleUs);
             convertView.setTag(holder);
         } else {
             holder = (Holder) convertView.getTag();
         }
-        holder.title.setText(menus.get(position).getDescription());
+        holder.titleBr.setText(menus.get(position).getDescriptionBr());
+        holder.titleUs.setText(menus.get(position).getDescriptionUs());
         return convertView;
     }
 
     static class Holder {
-        public TextView title;
 
-        public Holder(final TextView title) {
-            this.title = title;
+        TextView titleBr;
+        TextView titleUs;
+
+        public Holder(final TextView titleBr, final TextView titleUs) {
+            this.titleBr = titleBr;
+            this.titleUs = titleUs;
         }
     }
 }

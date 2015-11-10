@@ -3,18 +3,24 @@ package br.com.quicktipsenglish.model;
 public class Menu {
 
     private int type;
-    private String description;
+    private String descriptionBr;
+    private String descriptionUs;
 
-    public Menu(int type, String description) {
+    public Menu(int type, final String descriptionBr, final String descriptionUs) {
         this.type = type;
-        this.description = description;
+        this.descriptionBr = descriptionBr;
+        this.descriptionUs = descriptionUs;
     }
 
     public int getType() {
         return type;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescriptionBr() {
+        return descriptionBr;
+    }
+
+    public String getDescriptionUs() {
+        return descriptionUs;
     }
 }

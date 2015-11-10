@@ -15,12 +15,13 @@ import android.widget.Toast;
 import br.com.quicktipsenglish.R;
 import br.com.quicktipsenglish.cache.TipsCache;
 import br.com.quicktipsenglish.model.Menu;
+import br.com.quicktipsenglish.view.MainView;
 import br.com.quicktipsenglish.view.adapter.MenuAdapter;
 import br.com.quicktipsenglish.view.fragment.AboutFragment;
 import br.com.quicktipsenglish.view.fragment.TipsFragment;
 import br.com.quicktipsenglish.view.presenter.MainPresenter;
 
-public class MainActivity extends AppCompatActivity implements MainPresenter.Callback,
+public class MainActivity extends AppCompatActivity implements MainView,
         AdapterView.OnItemClickListener {
 
     private ListView menus;
@@ -39,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Cal
         dialog = new ProgressDialog(this);
         dialog.setMessage("Wait, loading tips...");
         dialog.show();
-        presenter = new MainPresenter();
-        presenter.load(this, this);
+        presenter = new MainPresenter(getApplicationContext(), this);
+        presenter.load();
     }
 
     private void bindView() {
@@ -113,7 +114,8 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Cal
             final Menu menu = (Menu) parent.getAdapter().getItem(position);
             if (menu != null) {
                 hideOrShowMenu();
-                changeTitleToolbar(menu.getDescription());
+                changeTitleToolbar(menu.getDescriptionBr());
+                presenter.ClearBack();
                 openFragment(menu.getType());
             }
         }
@@ -121,5 +123,16 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Cal
 
     private void changeTitleToolbar(final String title) {
         this.toolbar.setTitle(title);
+    }
+
+    @Override
+    public void showMessageToCloseApp() {
+        Toast.makeText(this, getString(R.string.back_message), Toast.LENGTH_LONG)
+                .show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        presenter.onBackPressed();
     }
 }
