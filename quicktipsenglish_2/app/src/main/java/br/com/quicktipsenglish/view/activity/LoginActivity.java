@@ -14,6 +14,8 @@ import br.com.quicktipsenglish.R;
 import br.com.quicktipsenglish.view.AuthenticationView;
 import br.com.quicktipsenglish.view.presenter.AuthenticationPresenter;
 
+import static android.R.color.holo_blue_dark;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, AuthenticationView {
 
     private Button btnContentLogin, btnContentRegister, btnLogin, btnRegister;
@@ -28,7 +30,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         dialog = new ProgressDialog(this);
         dialog.setCancelable(false);
-        presenter = new AuthenticationPresenter(this);
+        presenter = new AuthenticationPresenter(this, getApplicationContext());
+        presenter.validateLastAuthentication();
 
         btnContentLogin = (Button) findViewById(R.id.btn_container_login);
         btnContentLogin.setOnClickListener(this);
@@ -56,19 +59,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btn_container_login:
                 containerLogin.setVisibility(View.VISIBLE);
                 containerRegister.setVisibility(View.GONE);
+                btnContentLogin.setBackgroundColor(getResources().getColor(holo_blue_dark));
+                btnContentRegister.setBackgroundColor(getResources().getColor(android.R.color.background_light));
                 break;
             case R.id.btn_container_register:
                 containerLogin.setVisibility(View.GONE);
                 containerRegister.setVisibility(View.VISIBLE);
+                btnContentLogin.setBackgroundColor(getResources().getColor(android.R.color.background_light));
+                btnContentRegister.setBackgroundColor(getResources().getColor(holo_blue_dark));
                 break;
             case R.id.btn_login:
-                dialog.setMessage("Wait, authenticating user...");
-                dialog.show();
+                showLoading("Wait, authenticating user...");
                 presenter.login(edtLogin.getText().toString(), edtPassword.getText().toString());
                 break;
             case R.id.btn_register:
-                dialog.setMessage("Wait, registering user...");
-                dialog.show();
+                showLoading("Wait, registering user...");
                 presenter.register(edtRegisterEmail.getText().toString(), edtRegisterLogin.getText().toString(),
                         edtRegisterPassword.getText().toString());
                 break;
@@ -80,23 +85,67 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void loginFail() {
-
+        dialog.dismiss();
+        Toast.makeText(this, "Login fail", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void loginSuccess() {
-
+        dialog.dismiss();
+        goToHomeScreen();
     }
 
     @Override
     public void registerFail() {
+        dialog.dismiss();
         Toast.makeText(this, "Register fail", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void registerSuccess() {
+        dialog.dismiss();
         Toast.makeText(this, "Register success", Toast.LENGTH_LONG).show();
+        goToHomeScreen();
+    }
+
+    private void goToHomeScreen() {
         startActivity(new Intent(this, MainActivity.class));
         finish();
+    }
+
+    @Override
+    public void registerConnectionFail() {
+        dialog.dismiss();
+        Toast.makeText(this, "Connection fail", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showLoading(String message) {
+        dialog.setMessage(message);
+        dialog.show();
+    }
+
+    @Override
+    public void userExists() {
+        dialog.dismiss();
+        Toast.makeText(this, "User already exists", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void userNotExits() {
+        dialog.dismiss();
+        Toast.makeText(this, "User doesn't exist", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void blankFields() {
+        dialog.dismiss();
+        Toast.makeText(this, "Blank fields", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void emailInvalid() {
+        dialog.dismiss();
+        Toast.makeText(this, "Email invalid", Toast.LENGTH_LONG).show();
     }
 }

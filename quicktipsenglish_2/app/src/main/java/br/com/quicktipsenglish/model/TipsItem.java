@@ -1,29 +1,31 @@
 package br.com.quicktipsenglish.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by elizeu on 25/09/15.
  */
 public class TipsItem {
 
-    private String titleUs;
-    private String titleBr;
+    private Integer id;
+    private Integer tipsId;
     private String descriptionUs;
     private String descriptionBr;
 
-    public String getTitleUs() {
-        return titleUs;
+    public Integer getId() {
+        return id;
     }
 
-    public void setTitleUs(String titleUs) {
-        this.titleUs = titleUs;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getTitleBr() {
-        return titleBr;
+    public Integer getTipsId() {
+        return tipsId;
     }
 
-    public void setTitleBr(String titleBr) {
-        this.titleBr = titleBr;
+    public void setTipsId(Integer tipsId) {
+        this.tipsId = tipsId;
     }
 
     public String getDescriptionUs() {

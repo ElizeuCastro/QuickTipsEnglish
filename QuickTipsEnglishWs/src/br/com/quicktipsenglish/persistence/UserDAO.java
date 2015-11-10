@@ -12,7 +12,7 @@ public class UserDAO {
 	public User save(User user) {
 		int generetedId = -1;
 		try {
-			final String sql = "insert into user (user_email, user_nickname, user_password) values "
+			final String sql = "insert into user (user_email, user_nick_name, user_password) values "
 					+ "(?,?,?)";
 			PreparedStatement statement = ConnectionFactory.getConnection()
 					.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -33,19 +33,25 @@ public class UserDAO {
 		return user;
 	}
 
-	public boolean login(User user) {
-		final String sql = "select * from user where user_nickname = ? and user_password = ?";
-		boolean sucess = false;
+	public User login(User user) {
+		final String sql = "select * from user where user_nick_name = ? and user_password = ?";
 		try {
 			PreparedStatement statement = ConnectionFactory.getConnection()
 					.prepareStatement(sql);
 			statement.setString(1, user.getNickName());
 			statement.setString(2, user.getPassword());
 			final ResultSet resultSet = statement.executeQuery();
-			sucess = resultSet.next();
+			if (resultSet.next()) {
+				user.setId(resultSet.getInt(1));
+			}
 		} catch (final SQLException e) {
 			throw new RuntimeException(e);
 		}
-		return sucess;
+		return user;
+	}
+
+	public boolean userExists(User user) {
+		user = login(user);
+		return user.isSaved();
 	}
 }

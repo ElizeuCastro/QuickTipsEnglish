@@ -15,12 +15,13 @@ import android.widget.Toast;
 import br.com.quicktipsenglish.R;
 import br.com.quicktipsenglish.cache.TipsCache;
 import br.com.quicktipsenglish.model.Menu;
+import br.com.quicktipsenglish.view.MainView;
 import br.com.quicktipsenglish.view.adapter.MenuAdapter;
 import br.com.quicktipsenglish.view.fragment.AboutFragment;
 import br.com.quicktipsenglish.view.fragment.TipsFragment;
 import br.com.quicktipsenglish.view.presenter.MainPresenter;
 
-public class MainActivity extends AppCompatActivity implements MainPresenter.Callback,
+public class MainActivity extends AppCompatActivity implements MainView,
         AdapterView.OnItemClickListener {
 
     private ListView menus;
@@ -39,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Cal
         dialog = new ProgressDialog(this);
         dialog.setMessage("Wait, loading tips...");
         dialog.show();
-        presenter = new MainPresenter();
-        presenter.load(this, this);
+        presenter = new MainPresenter(this);
+        presenter.getTips();
     }
 
     private void bindView() {
@@ -98,13 +99,18 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Cal
     public void onSuccess() {
         dialog.dismiss();
         setupDrawer();
-        TipsCache.getTips();
     }
 
     @Override
     public void onFail() {
         dialog.dismiss();
         Toast.makeText(this, "Tips not found!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void connectionFail() {
+        dialog.dismiss();
+        Toast.makeText(this, "Connection fail!", Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -1,55 +1,41 @@
 package br.com.quicktipsenglish.view.presenter;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.ConnectException;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.quicktipsenglish.cache.TipsCache;
 import br.com.quicktipsenglish.consumer.ServiceGenerator;
-import br.com.quicktipsenglish.consumer.UserService;
-import br.com.quicktipsenglish.model.Category;
+import br.com.quicktipsenglish.consumer.TipsService;
 import br.com.quicktipsenglish.model.Menu;
-import br.com.quicktipsenglish.model.Tip;
+import br.com.quicktipsenglish.model.Tips;
+import br.com.quicktipsenglish.view.MainView;
 
 public class MainPresenter {
 
-    public interface Callback {
+    private MainView view;
 
-        void onSuccess();
-
-        void onFail();
-
+    public MainPresenter(MainView view) {
+        this.view = view;
     }
 
-    public void load(final Context context, final Callback callback) {
+    public void getTips() {
         new AsyncTask<Void, Void, Boolean>() {
+
+            private boolean connectionError;
 
             @Override
             protected Boolean doInBackground(Void... params) {
                 try {
-
-                    UserService userResource = ServiceGenerator.createService(UserService.class);
-                    userResource.getTips().execute().body();
-
-                    final InputStream is = context.getAssets().open("tips.json");
-                    final int size = is.available();
-                    final byte[] buffer = new byte[size];
-                    is.read(buffer);
-                    is.close();
-                    final String json = new String(buffer, "UTF-8");
-                    TypeToken<List<Tip>> token = new TypeToken<List<Tip>>() {
-                    };
-                    final Gson gson = new Gson();
-                    List<Tip> tips = gson.fromJson(json, token.getType());
+                    final TipsService tipsService = ServiceGenerator.createService(TipsService.class);
+                    List<Tips> tips = tipsService.getTips().execute().body();
                     TipsCache.setTips(tips);
                     TipsCache.setMenus(retrieveMenus(tips));
+                } catch (ConnectException e) {
+                    connectionError = true;
                 } catch (IOException ex) {
                     return Boolean.FALSE;
                 }
@@ -58,27 +44,24 @@ public class MainPresenter {
 
             @Override
             protected void onPostExecute(final Boolean result) {
-                if (result) {
-                    callback.onSuccess();
+                if (connectionError) {
+                    view.connectionFail();
+                } else if (result) {
+                    view.onSuccess();
                 } else {
-                    callback.onFail();
+                    view.onFail();
                 }
             }
         }.execute();
 
     }
 
-    private List<Menu> retrieveMenus(List<Tip> tips) {
+    private List<Menu> retrieveMenus(List<Tips> tips) {
         final List<Menu> menus = new ArrayList<>();
-        for (final Tip tip : tips) {
-            menus.add(new Menu(tip.getType(), tip.getTypeDescription()));
+        for (final Tips tip : tips) {
+            menus.add(new Menu(tip.getId(), tip.getName()));
         }
         return menus;
-    }
-
-
-    public static class ListaTest extends ArrayList<Category> {
-
     }
 
 }

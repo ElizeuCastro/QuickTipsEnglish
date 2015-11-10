@@ -10,14 +10,6 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String email, String nickName, String password) {
-        super();
-        this.id = id;
-        this.email = email;
-        this.nickName = nickName;
-        this.password = password;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -31,7 +23,7 @@ public class User {
     }
 
     public boolean isSaved() {
-        return this.id > -1;
+        return this.id != null && this.id > -1;
     }
 
     public Integer getId() {
@@ -42,4 +34,15 @@ public class User {
         this.id = id;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

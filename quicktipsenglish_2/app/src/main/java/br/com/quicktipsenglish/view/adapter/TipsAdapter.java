@@ -35,7 +35,6 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
 
     private List<TipsItem> tips;
     private OnClickListener listener;
-    private boolean isSpeaking;
 
     public TipsAdapter(final List<TipsItem> tips, final TipsFragment listener) {
         this.tips = tips;
@@ -57,20 +56,11 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final TipsItem tip = tips.get(position);
-        defineValueAnVisibilityTitle(holder.txvTitleUs, tip.getTitleUs());
+        holder.txvTitleUs.setVisibility(View.GONE);
+        holder.txvTitleBr.setVisibility(View.GONE);
         holder.txvDescriptionUs.setText(tip.getDescriptionUs());
-        defineValueAnVisibilityTitle(holder.txvTitleBr, tip.getTitleBr());
         holder.txvDescriptionBr.setText(tip.getDescriptionBr());
         defineListenerSpeak(holder, tip);
-    }
-
-    private void defineValueAnVisibilityTitle(final TextView txvTitle, final String title) {
-        if (title != null && !title.isEmpty()) {
-            txvTitle.setVisibility(View.VISIBLE);
-            txvTitle.setText(title);
-        } else {
-            txvTitle.setVisibility(View.GONE);
-        }
     }
 
     private void defineListenerSpeak(ViewHolder holder, final TipsItem tip) {

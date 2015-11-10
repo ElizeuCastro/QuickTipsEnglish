@@ -14,7 +14,7 @@ import retrofit.Retrofit;
  */
 public class ServiceGenerator {
 
-    public static final String API_BASE_URL = "http://10.2.0.130:8080";
+    public static final String API_BASE_URL = "http://10.192.2.50:8080";
 
     private static OkHttpClient httpClient = new OkHttpClient();
     private static Retrofit.Builder builder =

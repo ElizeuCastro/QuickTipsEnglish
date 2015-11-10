@@ -13,5 +13,15 @@ public interface AuthenticationView {
 
     void registerSuccess();
 
+    void registerConnectionFail();
 
+    void showLoading(String message);
+
+    void userExists();
+
+    void userNotExits();
+
+    void blankFields();
+
+    void emailInvalid();
 }

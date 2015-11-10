@@ -43,7 +43,7 @@ public class User {
 	}
 
 	public boolean isSaved() {
-		return this.id > -1;
+		return this.id != null && this.id > -1;
 	}
 
 	public Integer getId() {

@@ -25,6 +25,10 @@ public class UserResource {
 			@FormParam("nick_name") String nickName,
 			@FormParam("password") String password) {
 		final UserDAO userDAO = new UserDAO();
+		
+		if (userDAO.userExists(new User(email, nickName, password))){
+			return Response.status(Status.CONFLICT).build();
+		}
 		User user = userDAO.save(new User(email, nickName, password));
 		Response response = Response.status(Status.NOT_FOUND).build();
 		if (user != null) {
@@ -43,10 +47,11 @@ public class UserResource {
 	public Response login(@FormParam("nick_name") String nickName,
 			@FormParam("password") String password) {
 		final UserDAO userDAO = new UserDAO();
-		final boolean sucess = userDAO.login(new User(nickName, password));
+		User user = userDAO.login(new User(nickName, password));
 		Response response = Response.status(Status.NOT_FOUND).build();
-		if (sucess) {
-			response = Response.ok().build();
+		if (user.isSaved()) {
+			final Gson gson = new Gson();
+			response = Response.ok(gson.toJson(user)).build();
 		}
 		return response;
 	}
