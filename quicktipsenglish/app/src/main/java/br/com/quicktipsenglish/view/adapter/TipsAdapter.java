@@ -57,20 +57,9 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final TipItem tip = tips.get(position);
-        defineValueAnVisibilityTitle(holder.txvTitleUs, tip.getTitleUs());
         holder.txvDescriptionUs.setText(tip.getDescriptionUs());
-        defineValueAnVisibilityTitle(holder.txvTitleBr, tip.getTitleBr());
         holder.txvDescriptionBr.setText(tip.getDescriptionBr());
         defineListenerSpeak(holder, tip);
-    }
-
-    private void defineValueAnVisibilityTitle(final TextView txvTitle, final String title) {
-        if (title != null && !title.isEmpty()) {
-            txvTitle.setVisibility(View.VISIBLE);
-            txvTitle.setText(title);
-        } else {
-            txvTitle.setVisibility(View.GONE);
-        }
     }
 
     private void defineListenerSpeak(ViewHolder holder, final TipItem tip) {
@@ -96,19 +85,15 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView txvTitleUs;
         private TextView txvDescriptionUs;
         private ImageView imvSpeakUs;
-        private TextView txvTitleBr;
         private TextView txvDescriptionBr;
         private ImageView imvSpeakBr;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.txvTitleUs = (TextView) itemView.findViewById(R.id.txv_title_us);
             this.txvDescriptionUs = (TextView) itemView.findViewById(R.id.txv_description_us);
             this.imvSpeakUs = (ImageView) itemView.findViewById(R.id.imv_speak_us);
-            this.txvTitleBr = (TextView) itemView.findViewById(R.id.txv_title_br);
             this.txvDescriptionBr = (TextView) itemView.findViewById(R.id.txv_description_br);
             this.imvSpeakBr = (ImageView) itemView.findViewById(R.id.imv_speak_br);
         }

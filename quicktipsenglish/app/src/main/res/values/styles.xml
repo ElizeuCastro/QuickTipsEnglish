@@ -1,6 +1,18 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TitleToolBar" parent="AppTheme">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/title_toolbar_color</item>
+    </style>
+
+    <style name="SubTitleToolBar" parent="AppTheme">
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/title_toolbar_color</item>
     </style>
 
 </resources>

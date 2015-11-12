@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?android:attr/activatedBackgroundIndicator"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_menu_item"
+    android:descendantFocusability="beforeDescendants"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -11,15 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cantadas"
-        android:textSize="15dp"
-        android:textStyle="bold" />
+        android:textColor="@color/menu_item_color"
+        android:textSize="15dp" />
 
     <TextView
         android:id="@+id/titleUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Flirt"
-        android:textSize="10dp"
+        android:textColor="@color/menu_item_color"
+        android:textSize="12dp"
         android:textStyle="italic" />
 
 </LinearLayout>

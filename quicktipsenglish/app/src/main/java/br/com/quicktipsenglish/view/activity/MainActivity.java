@@ -3,6 +3,7 @@ package br.com.quicktipsenglish.view.activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements MainView,
     private ProgressDialog dialog;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
+    private MenuAdapter menuAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,16 +54,22 @@ public class MainActivity extends AppCompatActivity implements MainView,
 
     private void setupActionBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Quick tips english");
+        toolbar.setTitle("Quick Tips in English");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(R.drawable.ic_drawer);
+        toolbar.setBackgroundColor(ContextCompat
+                .getColor(getApplicationContext(), R.color.bg_toolbar_color));
+        toolbar.setTitleTextAppearance(getApplicationContext(), R.style.TitleToolBar);
+        toolbar.setSubtitleTextAppearance(getApplicationContext(), R.style.SubTitleToolBar);
+
+        toolbar.setNavigationIcon(R.drawable.menu);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
                 hideOrShowMenu();
             }
         });
+
     }
 
     private void hideOrShowMenu() {
@@ -73,7 +81,8 @@ public class MainActivity extends AppCompatActivity implements MainView,
     }
 
     private void setupDrawer() {
-        menus.setAdapter(new MenuAdapter(TipsCache.getMenus()));
+        menuAdapter = new MenuAdapter(TipsCache.getMenus());
+        menus.setAdapter(menuAdapter);
     }
 
     private void openAbout() {
@@ -113,16 +122,18 @@ public class MainActivity extends AppCompatActivity implements MainView,
         if (parent != null && parent.getAdapter() != null) {
             final Menu menu = (Menu) parent.getAdapter().getItem(position);
             if (menu != null) {
+                menuAdapter.changeTitleColorItemSelected(position);
                 hideOrShowMenu();
-                changeTitleToolbar(menu.getDescriptionBr());
+                changeTitleToolbar(menu);
                 presenter.ClearBack();
                 openFragment(menu.getType());
             }
         }
     }
 
-    private void changeTitleToolbar(final String title) {
-        this.toolbar.setTitle(title);
+    private void changeTitleToolbar(final Menu menu) {
+        this.toolbar.setTitle(menu.getDescriptionBr());
+        this.toolbar.setSubtitle(menu.getDescriptionUs());
     }
 
     @Override
