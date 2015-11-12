@@ -18,6 +18,10 @@ import br.com.quicktipsenglish.view.component.AnimatedScaleDrawable;
  */
 public class SpeakingDialog extends DialogFragment implements View.OnClickListener {
 
+    {
+        setStyle(STYLE_NO_TITLE, 0);
+    }
+
     public interface SpeakingListener {
         void onRepeat();
     }
@@ -35,19 +39,21 @@ public class SpeakingDialog extends DialogFragment implements View.OnClickListen
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        prepareAnimation();
+       // prepareAnimation();
         bindView();
-        starAnimation();
+        //starAnimation();
     }
 
     private void bindView() {
         imageView = (ImageView) getView().findViewById(R.id.imv);
+        imageView.setBackground(ContextCompat
+                .getDrawable(getActivity().getApplicationContext(), R.drawable.play_sound));
         imageView.setOnClickListener(this);
     }
 
     private void prepareAnimation() {
         drawable = new AnimatedScaleDrawable(
-                ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.vs_micbtn_on));
+                ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.play_sound));
         drawable.setInterpolator(new BounceInterpolator());
         drawable.setInvertTransformation(true);
         drawable.setDuration(500);
@@ -73,7 +79,7 @@ public class SpeakingDialog extends DialogFragment implements View.OnClickListen
         if (drawable != null) {
             drawable.stop();
             imageView.setBackground(ContextCompat
-                    .getDrawable(getActivity().getApplicationContext(), R.drawable.vs_micbtn_on));
+                    .getDrawable(getActivity().getApplicationContext(), R.drawable.play_sound));
         }
     }
 

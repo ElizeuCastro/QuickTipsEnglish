@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">QuickTipsEnglish</string>
     <string name="back_message">Tap back once again \nto close the application</string>
+    <string name="about_text">The objective of this application is to help communication between foreigners and Brazilian service providers in the event of the \n<b>Olympic Games - Rio 2016</b></string>
 </resources>

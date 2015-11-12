@@ -3,4 +3,5 @@
     <color name="bg_toolbar_color">#3f51b5</color>
     <color name="title_toolbar_color">#ffffff</color>
     <color name="menu_item_color">#4b4b4b</color>
+    <color name="menu_item_selected_color">#ff5757</color>
 </resources>

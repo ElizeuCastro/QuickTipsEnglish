@@ -75,6 +75,8 @@ public class TipsFragment extends Fragment implements TipsView, TipsAdapter.OnCl
     public void setUpTextToSpeech() {
         if (getActivity() != null) {
             textToSpeech = new TextToSpeech(getActivity(), this);
+            textToSpeech.setSpeechRate(0.9f);
+            textToSpeech.setPitch(1.2f);
         }
     }
 

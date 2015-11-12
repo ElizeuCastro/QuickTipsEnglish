@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">QuickTipsEnglish</string>
     <string name="back_message">Toque em voltar mais uma vez \npara fechar o aplicativo</string>
+    <string name="about_text">O objetivo deste aplicativo é ajudar na comunição entre estrangeiros e brasileiros prestadores de serviços no evento dos \n<b>Jogos Olímpicos - Rio 2016</b></string>
 </resources>

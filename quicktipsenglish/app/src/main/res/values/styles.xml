@@ -4,12 +4,14 @@
         <item name="android:typeface">sans</item>
     </style>
 
-    <style name="TitleToolBar" parent="AppTheme">
+    <style name="TitleToolBar">
+        <item name="android:typeface">sans</item>
         <item name="android:textSize">20dp</item>
         <item name="android:textColor">@color/title_toolbar_color</item>
     </style>
 
-    <style name="SubTitleToolBar" parent="AppTheme">
+    <style name="SubTitleToolBar">
+        <item name="android:typeface">sans</item>
         <item name="android:textStyle">italic</item>
         <item name="android:textSize">12dp</item>
         <item name="android:textColor">@color/title_toolbar_color</item>
