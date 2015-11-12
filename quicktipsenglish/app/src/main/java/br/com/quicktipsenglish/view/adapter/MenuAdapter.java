@@ -57,7 +57,7 @@ public class MenuAdapter extends BaseAdapter {
         if (isItemSelected(position)) {
             holder.titleBr.setTextColor(ContextCompat.getColor(parent.getContext(), android.R.color.white));
             holder.titleUs.setTextColor(ContextCompat.getColor(parent.getContext(), android.R.color.white));
-        } elcdse {
+        } else {
             holder.titleBr.setTextColor(ContextCompat.getColor(parent.getContext(), R.color.menu_item_color));
             holder.titleUs.setTextColor(ContextCompat.getColor(parent.getContext(), R.color.menu_item_color));
         }
